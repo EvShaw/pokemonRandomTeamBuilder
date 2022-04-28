@@ -45,12 +45,10 @@
 let teamIndex = 1
 const teamRoster = ['', '', '', '', '', '']
 
-// document.querySelectorAll('#pokeIcon1').classList.add('pokeIconActive')
 
 //---------------------------------------------------------------------------Top Icons:
 
 document.querySelector('.pokeballDisplay').addEventListener('click', iconChange)
-
 
 function iconChange() {
   console.log('clicked')
@@ -71,25 +69,24 @@ function iconChange() {
 document.querySelector('.leftArrow').addEventListener('click', shiftLeft)
 
 function shiftLeft() {
-  switchIcon(teamIndex)
-  if (teamIndex !== 6) {
+  
+
+  
+  if (teamIndex !== 5) {
     document.querySelector('#rightArrow').classList.remove('hide')
   }
-
-
-
   console.log('to the left!')
-
   if (teamIndex !== 0) {
     teamIndex--
+    switchIcon(teamIndex)
     console.log(teamIndex)
+  } else if (teamIndex === 0) {
+    teamIndex = 5
+    console.log(teamIndex)
+    document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
+    document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
+    document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
   }
-
-
-  if (teamIndex === 0) {
-    document.querySelector('#leftArrow').classList.toggle('hide')
-  }
-
 }
 
 
@@ -100,28 +97,25 @@ function shiftLeft() {
 document.querySelector('.rightArrow').addEventListener('click', shiftRight)
 
 function shiftRight() {
+ 
 
-  switchIcon(teamIndex)
-
-  // if (teamIndex === 0) {
-  //   document.querySelector('#leftArrow').classList.remove('hide')
-  // }
-
-  // if (teamIndex === 6) {
-  //   document.querySelector('#rightArrow').classList.add('hide')
-  // }
   console.log('to the right!')
 
-  if (teamIndex !== 6) {
+  if (teamIndex !== 5) {
+   
     teamIndex++
+    switchIcon(teamIndex)
     console.log(teamIndex)
-  } else if (teamIndex === 6) {
+
+  } else if (teamIndex === 5) {
     teamIndex = 0
     console.log(teamIndex)
+    document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
+    document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
+    document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
   }
 
 }
-
 
 
 
