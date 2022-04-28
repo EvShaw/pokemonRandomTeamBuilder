@@ -1,0 +1,288 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  font-size: 62.5%
+}
+
+/******************************************
+  /* LAYOUT
+  /*******************************************/
+
+header {
+  height: 100px;
+}
+
+/******************************************
+  /* ADDITIONAL STYLES
+  /*******************************************/
+
+
+h1 {
+  font-size: 3rem;
+}
+
+/* -----------------------------------------------------------------------------Bench */
+
+
+
+.benchReview {
+  width: 60%;
+  height: 50px;
+  margin: auto;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 40px;
+}
+
+.pokeIconActive {
+  background-color: rgba(255, 0, 0, 0.6);
+  border-radius: 50%;
+}
+
+.pokeIcon img {
+  width: 25px;
+  height: 25px;
+ 
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------Pokeballs */
+.pokeballDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.pokeballs {
+  height: 200px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgPokeball {
+  width: 100px;
+  height: 100px;
+}
+
+
+/* CENTER */
+
+
+.centerBall {
+  transform: scale(1.5);
+  width: 20%;
+  opacity: 1;
+  background: white;
+  border-radius: 100px
+}
+
+/*------------------------------------------------------------- Arrows: next and prev */
+
+.arrowBTNS {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin: -150px 0 0 0;
+}
+
+.imgIcon {
+  width: 40px;
+  display: inline-block;
+
+}
+
+.leftArrow,
+.rightArrow {
+  background-color: rgb(228, 228, 228);
+  opacity: 80%;
+  border-radius: 50%;
+  max-width: 100px;
+  display: flex;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  background: radial-gradient(rgba(255, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+.leftArrow:active,
+.rightArrow:active {
+  background: red;
+}
+
+.leftArrow {
+  margin-right: 50px;
+}
+
+.rightArrow {
+  margin-left: 50px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+/*-----------------------------------------------------------------------Pokemon Info */
+
+
+/*-------- Name: */
+
+.pokemonName {
+  margin-top: 45px ;
+    text-align: center;
+  font-size: 1.6rem;
+}
