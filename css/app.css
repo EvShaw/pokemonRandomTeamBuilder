@@ -278,11 +278,15 @@ h1 {
 
 /*-----------------------------------------------------------------------Pokemon Info */
 
-
 /*-------- Name: */
 
 .pokemonName {
-  margin-top: 45px ;
+  margin-top: 60px ;
     text-align: center;
   font-size: 1.6rem;
+  /* order: -1; */
+}
+
+.pokeMoveset {
+  font-size: 1.2rem;
 }
