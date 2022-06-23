@@ -1,4 +1,36 @@
+//------------------------------------------------------------------------On firstLogIn:
+
+// const eggZero = document.querySelectorAll('.imgPokeball')[0]
+// const eggOne = document.querySelectorAll('.imgPokeball')[1]
+// const eggTwo = document.querySelectorAll('.imgPokeball')[2]
+
+// // localStorage.clear()
+
+// const firstLog = localStorage.getItem('lock', 'key')
+
+// firstLog === null ? getEggs() : welcomeBack()
+
+
+// function getEggs() {
+//   localStorage.setItem('lock', 'key')
+//   eggZero.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
+//   eggOne.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
+//   eggTwo.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
+// }
+
+// function welcomeBack() {
+//   alert('Welcome Back!')
+//   localStorage.getItem('teamRoster', teamRoster)
+//   console.log(teamRoster)
+// }
+
+
+//--------------------------------------------------------------<after login:
+
+
+
 let teamIndex = 0
+const pokemonBench = []
 
 // on click event - display pokemon
 document.querySelector('#centerBall').addEventListener('click', (e) => {
@@ -10,31 +42,32 @@ document.querySelector('#centerBall').addEventListener('click', (e) => {
 
 
 let randNum = Math.floor(Math.random() * 898) + 1
-=======
+
 
 document.querySelector('.pokeballDisplay').addEventListener('click', (eve) => {
 
   if (eve.target.className === 'imgPokeball' && teamRoster[teamIndex] === undefined) {
 
-    // console.log('fetching')
-    let randNum = Math.floor(Math.random() * 898) + 1
-    let url = `https://pokeapi.co/api/v2/pokemon/${randNum}/`
+    console.log('fetching')
 
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data.sprites.front_default)
-        teamRoster.push(data)
-        saveRoster()
-        // console.log(teamRoster[teamIndex].name)
-        document.querySelector('h3').innerText = teamRoster[teamIndex].name
-        displayPokemonSprite()
+    // let randNum = Math.floor(Math.random() * 898) + 1
+    // let url = `https://pokeapi.co/api/v2/pokemon/${randNum}/`
+
+    // fetch(url)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data.sprites.front_default)
+    //     teamRoster.push(data)
+    //     saveRoster()
+    //     // console.log(teamRoster[teamIndex].name)
+    //     document.querySelector('h3').innerText = teamRoster[teamIndex].name
+    //     displayPokemonSprite()
 
 
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
 
   } else if (teamRoster[teamIndex]) {
     // console.log('already fetched')
@@ -42,8 +75,8 @@ document.querySelector('.pokeballDisplay').addEventListener('click', (eve) => {
   }
 })
 
-//------------------------------------------------------------------------------TEAM:
-localStorage.clear()
+//--------------------------------------------------------------------------STORAGE:
+// localStorage.clear()
 
 //to save as local storage, need to convert to json. so how do I do that?
 
@@ -53,61 +86,7 @@ function saveRoster() {
   return JSON.stringify(teamRoster)
 }
 
-
-
-
-// const Inventory = {
-//   size: 10,
-//   openSpots: 0,
-//   slotOne: 'pokemonEgg'
-// }
-
-
 //------------------------------------------------------Pokemon API Fetch:
-
-
-
-// console.log(teamRoster)
-//---------------------------------assign egg to array:
-
-
-
-
-//---------------------------------click on egg to hatch:
-
-
-// document.querySelector('button').addEventListener('click', getFetch)
-// function getFetch(){
-//   const poke1 = document.querySelector('#poke1').value
-//   const poke2 = document.querySelector('#poke2').value
-//   const url = 'https://pokeapi.co/api/v2/pokemon/'+poke1
-//   const url2 = 'https://pokeapi.co/api/v2/pokemon/'+poke2
-//   let pokeStore = []
-//   let pokeImg = []
-
-//   fetch(url)
-//       .then(res => res.json()) // parse response as JSON
-//       .then(data => {
-
-//         pokeStore.push(data.types[0].type.name)
-//         pokeImg.push(data.sprites.front_shiny)
-
-//         fetch(url2)
-//         .then(res => res.json()) // parse response as JSON
-//         .then(data => {
-
-//           pokeStore.push(data.types[0].type.name)
-//           pokeImg.push(data.sprites.front_shiny)
-
-//           if((pokeStore[0] === "grass" && pokeStore[1] === 'water')){
-//             document.querySelector('#pokeImg1').src = pokeImg[0]
-//             document.querySelector('#pokeImg2').src = pokeImg[1]
-//             document.querySelector('h2').innerText = " 2x > "
-//           }
-//         })
-//         .catch(err => {
-//             console.log(`error ${err}`)
-//         });
 
 async function getPokemon(url) {
   const res = await fetch(url)
@@ -123,47 +102,17 @@ async function getPokemon(url) {
 
   newPokemon.getMoves()
   newPokemon.displayMoves()
-=======
-//       })
-//       
 
-// }
+  newPokemon.getTypes()
+  newPokemon.changeBG()
+  newPokemon.displayIMG(data.sprites.other['official-artwork'].front_default)
+  newPokemon.displayName(data.name)
+
+  // const addToTeam 
+  newPokemon.addToBench(data)
+}
 
 // const pokeEggImg = 'https://www.pngitem.com/pimgs/m/52-528163_pokemon-egg-png-transparent-png.png'
-
-
-
-//------------------------------------------------------------------------On firstLogIn:
-
-const eggZero = document.querySelectorAll('.imgPokeball')[0]
-const eggOne = document.querySelectorAll('.imgPokeball')[1]
-const eggTwo = document.querySelectorAll('.imgPokeball')[2]
-
-// localStorage.clear()
-
-const firstLog = localStorage.getItem('lock', 'key')
-
-firstLog === null ? getEggs() : welcomeBack()
-
-
-function getEggs() {
-  localStorage.setItem('lock', 'key')
-  eggZero.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
-  eggOne.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
-  eggTwo.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
-}
-
-function welcomeBack() {
-  alert('Welcome Back!')
-  localStorage.getItem('teamRoster', teamRoster)
-  console.log(teamRoster)
-}
-
-
-//--------------------------------------------------------------<after login: 
-
-//---------------------------------------------------------Click on Egg/Ball to Reveal:
-
 
 
 //-----------------------------------------------------------------------loopthroughARR:
@@ -177,11 +126,7 @@ function welcomeBack() {
 // }
 
 
-  newPokemon.getTypes()
-  newPokemon.changeBG()
-  newPokemon.displayIMG(data.sprites.other['official-artwork'].front_default)
-  newPokemon.displayName(data.name)
-}
+
 
 //------------------------------------------------------------------------Pokemon Class:
 class Pokemon {
@@ -201,10 +146,18 @@ class Pokemon {
       this.typeList.push(property.type.name)
     }
   }
+
   getMoves() {
     for (let i = 0; i <= 3; i++) {
       const randomNum = Math.floor(Math.random() * this.moves.length) + 1
-      const moveName = this.moveList.push(this.moves[randomNum].move.name)
+      try {
+        const moveName = this.moveList.push(this.moves[randomNum].move.name)
+      } catch (error) {
+        console.log(error)
+        if (error) {
+          i--
+        }
+      }
     }
   }
   changeBG() {
@@ -241,28 +194,20 @@ class Pokemon {
       const li = document.createElement('li')
       li.textContent = move
       document.querySelector('.moveSetUl').appendChild(li)
+
+
+      teamRoster[teamIndex].moves.push(move)
     })
+  }
+  addToBench(data) {
+    pokemonBench.push(data)
+
+    teamRoster.push(data.moveList)
   }
 }
 
-// teamRoster[2] = "Charizard"
-
-
-
-// teamRoster.forEach( (mon, i) => {
-//   console.log(`${mon} is in spot: ${i+1}`)
-// })
-
 //--------------------------------------:
-
-
-
-
-
 //------------------------------------------------------------------------ARROWS:
-
-
-
 
 //------------------------ left arrow: 
 
@@ -277,10 +222,8 @@ function shiftLeft() {
   if (teamIndex !== 0) {
     teamIndex--
     switchIcon(teamIndex)
-    // console.log(teamIndex)
   } else if (teamIndex === 0) {
     teamIndex = 5
-    // console.log(teamIndex)
     document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
     document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
     document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
@@ -300,14 +243,12 @@ function shiftRight() {
   // console.log('to the right!')
 
   if (teamIndex !== 5) {
-
     teamIndex++
     switchIcon(teamIndex)
-    // console.log(teamIndex)
+
 
   } else if (teamIndex === 5) {
     teamIndex = 0
-    // console.log(teamIndex)
     document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
     document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
     document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
@@ -324,16 +265,6 @@ function shiftRight() {
 leftArrow = document.querySelector('#leftArrow')
 rightArrow = document.querySelector('#rightArrow')
 nameDisplay = document.querySelector('#nameText')
-
-
-
-
-// document.querySelector('body').addEventListener('click', (e) => {
-//   console.log(e)
-
-// })
-
-// document.querySelector('h3').classList.add('hide')
 
 document.querySelector('.arrowBTNS').addEventListener('click', displayChange)
 
@@ -465,16 +396,17 @@ function changeTheBG(typeOne) {
     default:
       centerBallBG.style.backgroundColor = 'black'
   }
-  // document.querySelector('.centerBall').style.backgroundColor = `${type}`1
-
-  // document.querySelector('.centerBall').style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
-
-
-let newArr = [0, 0]
-
-function countPositivesSumNegatives(input) {
-
 }
+// document.querySelector('.centerBall').style.backgroundColor = `${type}`1
+
+// document.querySelector('.centerBall').style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
+
+
+// let newArr = [0, 0]
+
+// function countPositivesSumNegatives(input) {
+
+// }
 
 
 // function changeTheBGDoubleColors(typeOne, typeTwo) {
@@ -525,82 +457,86 @@ class pokeInfo extends Pokemon {
 
 const teamRoster = [
   {
-    pokemonOneName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
   {
-    pokemonTwoName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
   {
-    pokemonTwoName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
   {
-    pokemonTwoName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
   {
-    pokemonTwoName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
   {
-    pokemonTwoName: '',
+    pokemonName: '',
     types: [],
     moves: [],
   },
 ]
 
-=======
 
-// countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
-// countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, null])
+
+// // countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
+// // countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, null])
+// // console.log(newArr)
+
+// // console.log(newArr)
+
+// countPositivesSumNegatives([0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, null, -13, -14])
+
 // console.log(newArr)
 
-// console.log(newArr)
-
-countPositivesSumNegatives([0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, null, -13, -14])
-
-console.log(newArr)
 
 
 
-
-let playerTurn = 'playerTwo'
-
-
-const gameStart = {
-  playerOne: prompt('Player One, what is your name?'),
-  playerTwo: prompt('And what is your name Player Two?'),
-
-  whoStarts() {
-    let randNum = Math.random()
-    console.log(randNum)
-    if (playerTurn === '-') {
-      if (randNum > .5) {
-        playerTurn = 'PlayerOne'
-      }
-
-    }
-    console.log(`${playerTurn} goes first!`)
-  },
-
-  //run this to change players turn
-  changePlayer() {
-    if (playerTurn === 'PlayerOne') {
-      playerTurn = 'PlayerTwo'
-    } else {
-      playerTurn === 'PlayerOne'
-    }
-  },
-}
+// let playerTurn = 'playerTwo'
 
 
-gameStart.whoStarts()
+// const gameStart = {
+//   playerOne: prompt('Player One, what is your name?'),
+//   playerTwo: prompt('And what is your name Player Two?'),
 
-console.log(gameStart)
+//   whoStarts() {
+//     let randNum = Math.random()
+//     console.log(randNum)
+//     if (playerTurn === '-') {
+//       if (randNum > .5) {
+//         playerTurn = 'PlayerOne'
+//       }
+
+//     }
+//     console.log(`${playerTurn} goes first!`)
+//   },
+
+//   //run this to change players turn
+//   changePlayer() {
+//     if (playerTurn === 'PlayerOne') {
+//       playerTurn = 'PlayerTwo'
+//     } else {
+//       playerTurn === 'PlayerOne'
+//     }
+//   },
+// }
+
+
+// gameStart.whoStarts()
+
+// console.log(gameStart)
+// 
+// code challenge: 
+
+
