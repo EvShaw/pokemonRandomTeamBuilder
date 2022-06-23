@@ -80,11 +80,11 @@ document.querySelector('.pokeballDisplay').addEventListener('click', (eve) => {
 
 //to save as local storage, need to convert to json. so how do I do that?
 
-function saveRoster() {
+// function saveRoster() {
 
-  console.log(JSON.stringify(teamRoster))
-  return JSON.stringify(teamRoster)
-}
+//   console.log(JSON.stringify(teamRoster))
+//   return JSON.stringify(teamRoster)
+// }
 
 //------------------------------------------------------Pokemon API Fetch:
 
@@ -96,20 +96,17 @@ async function getPokemon(url) {
   }
   const data = await res.json()
 
+  console.log(data)
 
-  const newPokemon = new Pokemon(data.name, data.types, data.moves, data.sprites.other['official-artwork'].front_default,)
-
+  const newPokemon = new PokeInfo(data.name, data.types, data.moves, data.sprites.other['official-artwork'].front_default, data.height, data.location_area_encounters)
 
   newPokemon.getMoves()
   newPokemon.displayMoves()
-
   newPokemon.getTypes()
   newPokemon.changeBG()
   newPokemon.displayIMG(data.sprites.other['official-artwork'].front_default)
   newPokemon.displayName(data.name)
-
-  // const addToTeam 
-  newPokemon.addToBench(data)
+  newPokemon.encounterInfo()
 }
 
 // const pokeEggImg = 'https://www.pngitem.com/pimgs/m/52-528163_pokemon-egg-png-transparent-png.png'
@@ -130,12 +127,12 @@ async function getPokemon(url) {
 
 //------------------------------------------------------------------------Pokemon Class:
 class Pokemon {
-  constructor(name, types, moves, image, locations, height) {
+  constructor(name, types, moves, image, height) {
     this.name = name
     this.types = types
     this.moves = moves
     this.image = image
-    this.locations = locations
+    // this.locations = locations
     this.height = height
     this.evolution = true
     this.typeList = []
@@ -144,15 +141,20 @@ class Pokemon {
   getTypes() {
     for (const property of this.types) {
       this.typeList.push(property.type.name)
+      //add types to object: 
+      teamRoster[teamIndex].types = this.typeList
     }
   }
 
   getMoves() {
+    //need to add a way to not have repeat moves
     for (let i = 0; i <= 3; i++) {
       const randomNum = Math.floor(Math.random() * this.moves.length) + 1
       try {
         const moveName = this.moveList.push(this.moves[randomNum].move.name)
       } catch (error) {
+        //I was getting an error where the name was having issues. Now we catch the erors and we subtract one from our loop, making it run until we have a full four moves. 
+
         console.log(error)
         if (error) {
           i--
@@ -182,27 +184,28 @@ class Pokemon {
   }
   displayIMG(data) {
     document.querySelector('#centerBall').src = data
+    //add/ store the image: 
+    teamRoster[teamIndex].img = data
+
   }
   displayName(data) {
+    //extract hyphen names <- AI
     const firstLetter = data[0].toUpperCase()
     const nameArray = data.split('')
     nameArray.splice(0, 1, firstLetter).join(' ')
     document.querySelector('.pokemonName').textContent = nameArray.join('')
+    //add name to object: 
+    teamRoster[teamIndex].pokemonName = data
   }
   displayMoves(name) {
+
     this.moveList.forEach(move => {
       const li = document.createElement('li')
       li.textContent = move
       document.querySelector('.moveSetUl').appendChild(li)
-
-
+      //add moves to object: 
       teamRoster[teamIndex].moves.push(move)
     })
-  }
-  addToBench(data) {
-    pokemonBench.push(data)
-
-    teamRoster.push(data.moveList)
   }
 }
 
@@ -286,6 +289,7 @@ function displayPokemonSprite() {
 
 }
 
+//add clear displays with click
 
 //---------------------------------------------------------------------------Top Icons:
 
@@ -434,109 +438,89 @@ function changeTheBG(typeOne) {
 // POKE Type COLORS:
 //13 of them ><
 
-class pokeInfo extends Pokemon {
-  constructor(name, types) {
-    super(name, types)
+class PokeInfo extends Pokemon {
+  constructor(name, types, moves, image, height, location) {
+    super(name, types, moves, image, height)
     this.locationURL = location
     this.locationList = []
     this.locationString = ''
   }
-
   encounterInfo() {
     fetch(this.locationURL)
       .then(res => res.json())
       .then(data => {
         console.log(data)
-
+        for (const item of data) {
+          this.locationList.push(item.location_area.name)
+        }
+        this.locationCleanUp()      
       })
       .catch(err => {
         console.log(`error: ${err}`)
       })
   }
+  locationCleanUp() {
+     //this code line is extracting the first five locaitons from the list. Could add a method to add more locations with a click. 
+    const words = this.locationList.slice(0, 5).join(', ').replaceAll('-', ' ').split('-')
+
+    //this loop is capitalizing the first letter for every word in the array
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1)
+
+      teamRoster[teamIndex].locations.push(words.join(' '))
+    }
+  }
 }
+
+//run conditional on log in. if roster is emptied fetch new info. if already done, then grab last visit info. 
 
 const teamRoster = [
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
   {
     pokemonName: '',
     types: [],
     moves: [],
+    img: '',
+    locations: [],
+    height: '',
   },
 ]
-
-
-
-// // countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15])
-// // countPositivesSumNegatives([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, null])
-// // console.log(newArr)
-
-// // console.log(newArr)
-
-// countPositivesSumNegatives([0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, null, -13, -14])
-
-// console.log(newArr)
-
-
-
-
-// let playerTurn = 'playerTwo'
-
-
-// const gameStart = {
-//   playerOne: prompt('Player One, what is your name?'),
-//   playerTwo: prompt('And what is your name Player Two?'),
-
-//   whoStarts() {
-//     let randNum = Math.random()
-//     console.log(randNum)
-//     if (playerTurn === '-') {
-//       if (randNum > .5) {
-//         playerTurn = 'PlayerOne'
-//       }
-
-//     }
-//     console.log(`${playerTurn} goes first!`)
-//   },
-
-//   //run this to change players turn
-//   changePlayer() {
-//     if (playerTurn === 'PlayerOne') {
-//       playerTurn = 'PlayerTwo'
-//     } else {
-//       playerTurn === 'PlayerOne'
-//     }
-//   },
-// }
-
-
-// gameStart.whoStarts()
-
-// console.log(gameStart)
-// 
-// code challenge: 
-
-
