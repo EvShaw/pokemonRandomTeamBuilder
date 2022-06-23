@@ -1,12 +1,77 @@
+
+let oldTeam = JSON.parse(window.localStorage.getItem('team'))
+
+
+
+const teamRoster = [
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+  {
+    pokemonName: '',
+    types: [],
+    moves: [],
+    img: '',
+    locations: [],
+    height: '',
+  },
+]
+
+for (let prop in oldTeam) {
+  teamRoster[prop] = oldTeam[prop]
+}
+// ------------------------------------------------------------ Display Selectors: 
+
+
+const centerBall = document.querySelector('#centerBall')
+
+const nameDisplay = document.querySelector('.pokemonName')
+
+
+
+
+// ---------------------------------------------------------------------
+
 //------------------------------------------------------------------------On firstLogIn:
 
-// const eggZero = document.querySelectorAll('.imgPokeball')[0]
-// const eggOne = document.querySelectorAll('.imgPokeball')[1]
-// const eggTwo = document.querySelectorAll('.imgPokeball')[2]
-
-// // localStorage.clear()
-
-// const firstLog = localStorage.getItem('lock', 'key')
+// display poke eggs instead of balls on first login. add small shake animation to center ball for both egg and ball. 
 
 // firstLog === null ? getEggs() : welcomeBack()
 
@@ -18,73 +83,39 @@
 //   eggTwo.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYrIoheMZaEbSvCK6crdSQ-fmL_b4YN4lonw&usqp=CAU'
 // }
 
-// function welcomeBack() {
-//   alert('Welcome Back!')
-//   localStorage.getItem('teamRoster', teamRoster)
-//   console.log(teamRoster)
-// }
+
 
 
 //--------------------------------------------------------------<after login:
 
 
 
+
 let teamIndex = 0
-const pokemonBench = []
+const pokemonBench = teamIndex
 
 // on click event - display pokemon
-document.querySelector('#centerBall').addEventListener('click', (e) => {
+centerBall.addEventListener('click', (e) => {
   // console.log(e)
-  getPokemon(`https://pokeapi.co/api/v2/pokemon/${randNum}`)
+  if (e.target.className === 'imgPokeball' && teamRoster[teamIndex].pokemonName == '') {
+    console.log('fetching')
+    //make call here... 
+    getPokemon(`https://pokeapi.co/api/v2/pokemon/${randNum}`)
+  } else {
+    //retrieve teamRoster[teamIndex] --- <-display this.
+    console.log(`I choose you, ${teamRoster[teamIndex].pokemonName}!`)
+    displayInformation()
+    //add display
+  }
+  
 })
-
-// pokemonImg = document.querySelector('imgPokeball').src = teamRoster[teamIndex].sprites.front_default
-
-
+//total pokemon. Will eventually add in number ranges for different games, allowing team builder to be customized to any one particular game. Currently based on national dex. 
 let randNum = Math.floor(Math.random() * 898) + 1
 
+// document.querySelector('.pokeballDisplay').addEventListener('click', (eve) => {
+ 
+// })
 
-document.querySelector('.pokeballDisplay').addEventListener('click', (eve) => {
-
-  if (eve.target.className === 'imgPokeball' && teamRoster[teamIndex] === undefined) {
-
-    console.log('fetching')
-
-    // let randNum = Math.floor(Math.random() * 898) + 1
-    // let url = `https://pokeapi.co/api/v2/pokemon/${randNum}/`
-
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data.sprites.front_default)
-    //     teamRoster.push(data)
-    //     saveRoster()
-    //     // console.log(teamRoster[teamIndex].name)
-    //     document.querySelector('h3').innerText = teamRoster[teamIndex].name
-    //     displayPokemonSprite()
-
-
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-
-  } else if (teamRoster[teamIndex]) {
-    // console.log('already fetched')
-    console.log(`I choose you, ${teamRoster[teamIndex].name}`)
-  }
-})
-
-//--------------------------------------------------------------------------STORAGE:
-// localStorage.clear()
-
-//to save as local storage, need to convert to json. so how do I do that?
-
-// function saveRoster() {
-
-//   console.log(JSON.stringify(teamRoster))
-//   return JSON.stringify(teamRoster)
-// }
 
 //------------------------------------------------------Pokemon API Fetch:
 
@@ -107,6 +138,7 @@ async function getPokemon(url) {
   newPokemon.displayIMG(data.sprites.other['official-artwork'].front_default)
   newPokemon.displayName(data.name)
   newPokemon.encounterInfo()
+  newPokemon.storeInfo()
 }
 
 // const pokeEggImg = 'https://www.pngitem.com/pimgs/m/52-528163_pokemon-egg-png-transparent-png.png'
@@ -217,7 +249,7 @@ class Pokemon {
 document.querySelector('.leftArrow').addEventListener('click', shiftLeft)
 
 function shiftLeft() {
-
+  clearDisplay()
   if (teamIndex !== 5) {
     document.querySelector('#rightArrow').classList.remove('hide')
   }
@@ -233,7 +265,7 @@ function shiftLeft() {
   }
   console.log(teamIndex)
   document.querySelectorAll('.imgPokeball')[1].src = 'https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png'
-  displayPokemonSprite()
+
 }
 
 
@@ -243,8 +275,7 @@ document.querySelector('.rightArrow').addEventListener('click', shiftRight)
 
 function shiftRight() {
 
-  // console.log('to the right!')
-
+  clearDisplay()
   if (teamIndex !== 5) {
     teamIndex++
     switchIcon(teamIndex)
@@ -257,44 +288,16 @@ function shiftRight() {
     document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
   }
 
-  // console.log(teamIndex)
+
   document.querySelectorAll('.imgPokeball')[1].src = 'https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png'
-  displayPokemonSprite()
-}
-
-//------------------------------------------Name Change: based on pokeIconActive Class
-
-
-leftArrow = document.querySelector('#leftArrow')
-rightArrow = document.querySelector('#rightArrow')
-nameDisplay = document.querySelector('#nameText')
-
-document.querySelector('.arrowBTNS').addEventListener('click', displayChange)
-
-function displayChange() {
-  document.querySelector('#nameText').innerText = teamRoster[teamIndex].name
-
-  // nameDisplay.innerText = teamRoster[teamIndex].name
-  if (teamRoster !== null || undefined) {
-
-    console.log(teamRoster[teamIndex].name)
-
-
-  }
 
 }
 
-function displayPokemonSprite() {
-  document.querySelectorAll('.imgPokeball')[1].src = teamRoster[teamIndex].sprites.front_default
 
-}
 
-//add clear displays with click
+
 
 //---------------------------------------------------------------------------Top Icons:
-
-
-
 function switchIcon(teamIndex) {
   switch (teamIndex) {
     case 0:
@@ -470,57 +473,31 @@ class PokeInfo extends Pokemon {
       teamRoster[teamIndex].locations.push(words.join(' '))
     }
   }
+  storeInfo() {
+    // localStorage.setItem('team', 'test')
+    // console.log('stored')
+    localStorage.setItem('team', JSON.stringify(teamRoster))
+  }
 }
+
+function displayInformation() {
+  nameDisplay.textContent = teamRoster[teamIndex].pokemonName
+  centerBall.src = teamRoster[teamIndex].img
+}
+
+function clearDisplay() {
+  nameDisplay.textContent = ''
+  centerBall.src = ''
+}
+
+
+
+
+
 
 //run conditional on log in. if roster is emptied fetch new info. if already done, then grab last visit info. 
 
-const teamRoster = [
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-  {
-    pokemonName: '',
-    types: [],
-    moves: [],
-    img: '',
-    locations: [],
-    height: '',
-  },
-]
+
+document.querySelector('.pokemonName2').addEventListener('click', _ => {
+  localStorage.clear()
+})
