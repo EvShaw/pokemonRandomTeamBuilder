@@ -73,25 +73,19 @@ const moveFour = document.querySelector('#moveFour')
 
 //--------------------------------------------------------------<after login:
 
-
-
-
 let teamIndex = 0
 const pokemonBench = teamIndex
 let typeOne = ''
 
 // on click event - display pokemon
 centerBall.addEventListener('click', (e) => {
-  // console.log(e)
+  // console.log(e.target.id)
 
-  if (e.target.className === 'imgPokeball' && teamRoster[teamIndex].pokemonName == '') {
-    console.log('fetching')
-    let randNum = Math.floor(Math.random() * 898) + 1 
+  if (teamRoster[teamIndex].pokemonName == '') {
+    let randNum = Math.floor(Math.random() * 898) + 1
     getPokemon(`https://pokeapi.co/api/v2/pokemon/${randNum}`)
 
-  
   } else {
-    //retrieve teamRoster[teamIndex] --- <-display this.
     console.log(`I choose you, ${teamRoster[teamIndex].pokemonName}!`)
     displayInformation()
     //add display
@@ -122,7 +116,7 @@ async function getPokemon(url) {
   newPokemon.displayName(data.name)
   newPokemon.encounterInfo()
   newPokemon.storeInfo()
-  typeOne = teamRoster[teamIndex].types[0]
+  // typeOne = teamRoster[teamIndex].types[0]
   changeTheBG(typeOne)
 }
 
@@ -138,7 +132,6 @@ class Pokemon {
     this.types = types
     this.moves = moves
     this.image = image
-    // this.locations = locations
     this.height = height
     this.evolution = true
     this.typeList = []
@@ -157,10 +150,9 @@ class Pokemon {
     for (let i = 0; i <= 3; i++) {
       const randomNum = Math.floor(Math.random() * this.moves.length) + 1
       try {
-        const moveName = this.moveList.push(this.moves[randomNum].move.name)
+        teamRoster[teamIndex].moves.push(this.moves[randomNum].move.name)
       } catch (error) {
-        //I was getting an error where the name was having issues. Now we catch the erors and we subtract one from our loop, making it run until we have a full four moves. 
-
+        //I was getting an error where the name was having issues and causing the moves to not come up. Now we catch the erors and we subtract one from our loop, making it run until we have a full four moves. 
         console.log(error)
         if (error) {
           i--
@@ -203,13 +195,13 @@ class Pokemon {
     teamRoster[teamIndex].pokemonName = data
   }
   displayMoves(name) {
-    this.moveList.forEach(move => {
+    // this.moveList.forEach(move => {
       // const li = document.createElement('li')
       // li.textContent = move
       // document.querySelector('.moveSetUl').appendChild(li)
       //add moves to object: 
-      teamRoster[teamIndex].moves.push(move)
-    })
+      // teamRoster[teamIndex].moves.push(move)
+    // })
   }
 }
 //------------------------------------------------------------------------ARROWS:
@@ -223,7 +215,6 @@ function shiftLeft() {
   if (teamIndex !== 5) {
     document.querySelector('#rightArrow').classList.remove('hide')
   }
-  // console.log('to the left!')
   if (teamIndex !== 0) {
     teamIndex--
     switchIcon(teamIndex)
@@ -242,9 +233,7 @@ function shiftLeft() {
 //------------------------ right arrow: 
 
 document.querySelector('.rightArrow').addEventListener('click', shiftRight)
-
 function shiftRight() {
-
   clearDisplay()
   if (teamIndex !== 5) {
     teamIndex++
@@ -320,19 +309,20 @@ class PokeInfo extends Pokemon {
         for (const item of data) {
           this.locationList.push(item.location_area.name)
         }
-        this.locationCleanUp()      
+        this.locationCleanUp()
       })
       .catch(err => {
         console.log(`error: ${err}`)
       })
   }
   locationCleanUp() {
-     //this code line is extracting the first five locaitons from the list. Could add a method to add more locations with a click. 
+    //this code line is extracting the first five locaitons from the list. Could add a method to add more locations with a click. 
     const words = this.locationList.slice(0, 5).join(', ').replaceAll('-', ' ').split('-')
 
     //this loop is capitalizing the first letter for every word in the array
     for (let i = 0; i < words.length; i++) {
-      words[i] = words[i][0].toUpperCase() + words[i].slice(1)
+      // words[i] = words[i][0].toUpperCase() + words[i].slice(1)
+      words[i] = words[i][0] + words[i].slice(1)
 
       teamRoster[teamIndex].locations.push(words.join(' '))
     }
@@ -354,20 +344,23 @@ function displayInformation() {
   moveFour.textContent = teamRoster[teamIndex].moves[3]
   //change BG: 
 
-  typeOne = teamRoster[teamIndex].types[0]
-  changeTheBG(typeOne)
 
-  if(teamRoster[teamIndex].types.length === 2) {
+
+  if (teamRoster[teamIndex].types.length === 2) {
     console.log('double')
+    changeTheBG('black')
   } else {
     console.log('sinlge')
+    typeOne = teamRoster[teamIndex].types[0]
+    changeTheBG(typeOne)
   }
 }
 
 function clearDisplay() {
   nameDisplay.textContent = ''
   centerBall.src = ''
-  
+  changeTheBG('black')
+
 }
 
 
@@ -394,6 +387,15 @@ function changeTheBG(type) {
       break;
     case 'fighting':
       centerBallBG.style.backgroundColor = fightingType
+      break;
+    case 'poison':
+      centerBallBG.style.backgroundColor = poisonType
+      break;
+    case 'ground':
+      centerBallBG.style.backgroundColor = groundType
+      break;
+    case 'flying':
+      centerBallBG.style.backgroundColor = flyingType
       break;
     case 'psychic':
       centerBallBG.style.backgroundColor = psychicType
