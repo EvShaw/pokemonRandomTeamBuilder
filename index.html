@@ -18,8 +18,12 @@
 		<!-- toggle tips on and off for help -->
 		<img class="profOak" src="/css/assets/profOak.png" alt="">
 		<img class="pokeDex" src="/css/assets/Pokedex.png" alt="">
+		<h4 class="thanksMapMaker">Oak is blocking the name, but the battle map is courtesy of: @patreon.com/miscellaneamaps</h4>
+		<h4 class="sideNotes">Upgrade your next Nuzlocke run by going all random. A team of 6 random Pokemon with 4 random moves. Let me know what you think! I currently do not have a way for you to reset your team as overuse of the API will get your ip banned.</h4>
 
-
+		<section class="chatBox hide">
+			<p class="">"Hi! I'm professor Oak. Click on the big pokeball to get your pokemon. click on the white balls to the right or left to cycle through your pokemon. You can only have six pokemon!"</p>
+		</section>
 
 		<section class="moveSet">
 			<ul class="moveSetUl">
@@ -48,6 +52,10 @@
 
 	<section class="topSection mainBG">
 		<section class="bench">
+			<!-- <section class="helper benchHelp">
+				<img src="/css/assets/rightArrow.png">
+				<h1>This is your Bench. It tells you what pokemon you have selected out of your six. You can cycle through your pokemon by clicking the white pokeballs on either side of the main pokeballs.</h1>
+			</section> -->
 			<section class="benchReview">
 				<section class="pokeIcon pokeIconActive" id="pokeIcon0">
 					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
@@ -71,10 +79,10 @@
 		</section>
 
 
-		<h3 class="pokemonName"></h3>
+		
 
 		<section class="pokeballDisplay">
-
+			<h3 class="pokemonName"></h3>
 			<!-----------------------------------------------------------------------PREV-->
 
 			<section class="pokeballs">
@@ -85,11 +93,26 @@
 
 			<!---------------------------------------------------------------------CENTER-->
 
+			<!-- <section class="helper centerBallHelp">
+				<img src="/css/assets/rightArrow.png">
+				<h1>When you click on this center Pokeball, you will be given a pokemon. If you have already received your pokemon, you will instead retrive it from the pokeball.</h1>
+				<section class="helper leftArrowHelp flexIt">
+					<img src="/css/assets/rightArrow.png">
+					<h1>Click this button to cycle to your left.</h1>
+				</section>
 
+				<section class="helper rightArrowHelp flexIt">
+					<img src="/css/assets/leftArrow.png">
+					<h1>Click this button to cycle to your right.</h1>
+				</section>
+			</section> -->
 
 			<section class="pokeballs centerBall" id="shake">
 				<img class="imgPokeball " id="centerBall"
 					src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
+
+
+					
 			</section>
 
 
@@ -108,10 +131,15 @@
 
 			<section class="leftArrow" id="leftArrow">
 				<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+
+				
+				
 			</section>
 
 			<section class="rightArrow" id="rightArrow">
 				<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+
+				
 			</section>
 		</section>
 	</section>

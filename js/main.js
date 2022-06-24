@@ -402,6 +402,7 @@ function displayInformation() {
     location4.innerText = allLocation[3]
   } else if (allLocation.length >= 5) {
     location1.innerText = `This Pokemon can be found at 5 or more locations:
+    \n
       ${allLocation[0]}
       ${allLocation[1]}
       ${allLocation[2]}
@@ -593,3 +594,27 @@ const fairyType = '#F0B6BC'
 // document.querySelector('.pokemonName2').addEventListener('click', _ => {
 //   localStorage.clear()
 // })
+
+
+//prof oak mouse over event
+
+const profOak = document.querySelector('.profOak')
+const chatBox = document.querySelector('.chatBox')
+
+
+// chat box appear
+profOak.addEventListener('mouseover', (e) => {
+
+  chatBox.classList.toggle('hide')
+})
+//chat box remove
+profOak.addEventListener('mouseleave', (e) => {
+
+  chatBox.classList.toggle('hide')
+})
+
+//toggle help
+profOak.addEventListener('click', (e) => {
+  console.log(e)
+  chatBox.classList.toggle('helpOverlay')
+})
