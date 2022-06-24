@@ -402,7 +402,7 @@ function displayInformation() {
     location4.innerText = allLocation[3]
   } else if (allLocation.length >= 5) {
     location1.innerText = `This Pokemon can be found at 5 or more locations:
-    \n
+    
       ${allLocation[0]}
       ${allLocation[1]}
       ${allLocation[2]}

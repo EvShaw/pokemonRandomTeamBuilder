@@ -14,86 +14,91 @@
 
 <body>
 
-	<section class="tipOverLay">
-		<!-- toggle tips on and off for help -->
-		<img class="profOak" src="/css/assets/profOak.png" alt="">
-		<img class="pokeDex" src="/css/assets/Pokedex.png" alt="">
-		<h4 class="thanksMapMaker">Oak is blocking the name, but the battle map is courtesy of: @patreon.com/miscellaneamaps</h4>
-		<h4 class="sideNotes">Upgrade your next Nuzlocke run by going all random. A team of 6 random Pokemon with 4 random moves. Let me know what you think! I currently do not have a way for you to reset your team as overuse of the API will get your ip banned.</h4>
+	<section>
+		<section class="tipOverLay">
+			<!-- toggle tips on and off for help -->
+			<img class="profOak" src="/css/assets/profOak.png" alt="">
+			<img class="pokeDex" src="/css/assets/Pokedex.png" alt="">
+			<h4 class="thanksMapMaker">Oak is blocking the name, but the battle map is courtesy of:
+				@patreon.com/miscellaneamaps</h4>
+			<h4 class="sideNotes">Upgrade your next Nuzlocke run by going all random. A team of 6 random Pokemon with 4
+				random moves. Let me know what you think! I currently do not have a way for you to reset your team as
+				overuse of the API will get your ip banned.</h4>
 
-		<section class="chatBox hide">
-			<p class="">"Hi! I'm professor Oak. Click on the big pokeball to get your pokemon. click on the white balls to the right or left to cycle through your pokemon. You can only have six pokemon!"</p>
+			<section class="chatBox hide">
+				<p class="">"Hi! I'm professor Oak. Click on the big pokeball to get your pokemon. click on the white
+					balls to the right or left to cycle through your pokemon. You can only have six pokemon!"</p>
+			</section>
+
+			<section class="moveSet">
+				<ul class="moveSetUl">
+					<li class="moves" id="moveOne"></li>
+					<li class="moves" id="moveTwo"></li>
+					<li class="moves" id="moveThree"></li>
+					<li class="moves" id="moveFour"></li>
+				</ul>
+			</section>
+
+			<section class="pokeInfo">
+				<h2 class="theName"></h2>
+				<h2><span class="theType"></span></h2>
+				<ul class="theLocation">
+					<h2></h2>
+					<li class="theLocation1"></li>
+					<li class="theLocation2"></li>
+					<li class="theLocation3"></li>
+					<li class="theLocation4"></li>
+					<li class="theLocation5"></li>
+				</ul>
+			</section>
+
+			<section class="whiteBackDropElement"></section>
 		</section>
 
-		<section class="moveSet">
-			<ul class="moveSetUl">
-				<li class="moves" id="moveOne"></li>
-				<li class="moves" id="moveTwo"></li>
-				<li class="moves" id="moveThree"></li>
-				<li class="moves" id="moveFour"></li>
-			</ul>
-		</section>
-		
-		<section class="pokeInfo">
-			<h2 class="theName"></h2>
-			<h2><span class="theType"></span></h2>
-			<ul class="theLocation">
-			<h2></h2>
-				<li class="theLocation1"></li>
-				<li class="theLocation2"></li>
-				<li class="theLocation3"></li>
-				<li class="theLocation4"></li>
-				<li class="theLocation5"></li>
-			</ul>
-		</section>
-
-		<section class="whiteBackDropElement"></section>
-	</section>
-
-	<section class="topSection mainBG">
-		<section class="bench">
-			<!-- <section class="helper benchHelp">
+		<section class="topSection mainBG">
+			<section class="bench">
+				<!-- <section class="helper benchHelp">
 				<img src="/css/assets/rightArrow.png">
 				<h1>This is your Bench. It tells you what pokemon you have selected out of your six. You can cycle through your pokemon by clicking the white pokeballs on either side of the main pokeballs.</h1>
 			</section> -->
-			<section class="benchReview">
-				<section class="pokeIcon pokeIconActive" id="pokeIcon0">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+				<section class="benchReview">
+					<section class="pokeIcon pokeIconActive" id="pokeIcon0">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
+					<section class="pokeIcon" id="pokeIcon1">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
+					<section class="pokeIcon" id="pokeIcon2">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
+					<section class="pokeIcon" id="pokeIcon3">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
+					<section class="pokeIcon" id="pokeIcon4">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
+					<section class="pokeIcon" id="pokeIcon5">
+						<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+					</section>
 				</section>
-				<section class="pokeIcon" id="pokeIcon1">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-				</section>
-				<section class="pokeIcon" id="pokeIcon2">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-				</section>
-				<section class="pokeIcon" id="pokeIcon3">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-				</section>
-				<section class="pokeIcon" id="pokeIcon4">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-				</section>
-				<section class="pokeIcon" id="pokeIcon5">
-					<img src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-				</section>
-			</section>
-		</section>
-
-
-		
-
-		<section class="pokeballDisplay">
-			<h3 class="pokemonName"></h3>
-			<!-----------------------------------------------------------------------PREV-->
-
-			<section class="pokeballs">
-				<img class="imgPokeball" src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png"
-					alt="">
 			</section>
 
 
-			<!---------------------------------------------------------------------CENTER-->
 
-			<!-- <section class="helper centerBallHelp">
+
+			<section class="pokeballDisplay">
+				<h3 class="pokemonName"></h3>
+				<!-----------------------------------------------------------------------PREV-->
+
+				<section class="pokeballs">
+					<img class="imgPokeball"
+						src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
+				</section>
+
+
+				<!---------------------------------------------------------------------CENTER-->
+
+				<!-- <section class="helper centerBallHelp">
 				<img src="/css/assets/rightArrow.png">
 				<h1>When you click on this center Pokeball, you will be given a pokemon. If you have already received your pokemon, you will instead retrive it from the pokeball.</h1>
 				<section class="helper leftArrowHelp flexIt">
@@ -107,61 +112,61 @@
 				</section>
 			</section> -->
 
-			<section class="pokeballs centerBall" id="shake">
-				<img class="imgPokeball " id="centerBall"
-					src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
+				<section class="pokeballs centerBall" id="shake">
+					<img class="imgPokeball " id="centerBall"
+						src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
 
 
-					
+
+				</section>
+
+
+				<!-----------------------------------------------------------------------NEXT-->
+
+				<section class="pokeballs">
+					<img class="imgPokeball"
+						src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png" alt="">
+				</section>
+
+
 			</section>
 
 
-			<!-----------------------------------------------------------------------NEXT-->
+			<section class="arrowBTNS">
 
-			<section class="pokeballs">
-				<img class="imgPokeball" src="https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png"
-					alt="">
+				<section class="leftArrow" id="leftArrow">
+					<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+
+
+
+				</section>
+
+				<section class="rightArrow" id="rightArrow">
+					<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
+
+
+				</section>
 			</section>
-
-
 		</section>
 
 
-		<section class="arrowBTNS">
-
-			<section class="leftArrow" id="leftArrow">
-				<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-
-				
-				
-			</section>
-
-			<section class="rightArrow" id="rightArrow">
-				<img class="imgIcon" src="https://img.icons8.com/carbon-copy/344/pokeball.png" alt="">
-
-				
-			</section>
-		</section>
-	</section>
-
-
-	<!-- <section class="bottomSection">
+		<!-- <section class="bottomSection">
 
 		<section>
 			<h1 class="pokemonName2">Your Pokemon</h1>
 		</section>
 
 		<section class="pokeInfo"> -->
-			<!-- <h2>Nameofpokemonhere</h2> -->
-			<!-- <h2>PokemonTypeHere</h2> -->
-			<!-- <h2>PokemonLocationsHere</h2> -->
+		<!-- <h2>Nameofpokemonhere</h2> -->
+		<!-- <h2>PokemonTypeHere</h2> -->
+		<!-- <h2>PokemonLocationsHere</h2> -->
 
 
 
 
-			
 
-			<!-- <section class="locations">
+
+		<!-- <section class="locations">
 				<h3><span id="thisPoke">id: this</span> can be found:
 					</span></h3>
 				<ul>
@@ -173,12 +178,20 @@
 					<li>+ more</li>
 				</ul>
 			</section> -->
-			<!-- <h2>has evolutions?</h2> -->
-		</section>
+		<!-- <h2>has evolutions?</h2> -->
+	</section>
+	</section>
 
 
 	</section>
-
+	<footer class="flexIt">
+		&copy; <a href="https://theevanproject.netlify.app/"> The Evan Project</a>
+		<ul class="flexIt">
+			<li><a href="https://twitter.com/Evan_ShawAZ"><img class="socialFooterIcons" src="/css/assets/twitterLogo_white.png"></a></li>
+			<li><a href="https://www.linkedin.com/in/shawevan/"><img class="socialFooterIcons" src="/css/assets/linkedInLogo_white.png"></a></li>
+			<li><a href="https://github.com/EvShaw"><img class="socialFooterIcons" src="/css/assets/githubLogo_white.png"></a></li>
+		</ul>
+	</footer>
 
 
 
