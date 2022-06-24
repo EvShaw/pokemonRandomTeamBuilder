@@ -259,8 +259,8 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  margin: -4.75rem 0 0rem 0;
-  gap: 16rem;
+  margin: -6.75rem 0 0rem 0;
+  gap: 17rem;
 }
 
 .imgIcon {
@@ -337,3 +337,27 @@ h1 {
   font-family: pokemon;
   src: url(/css/assets/Pokemon\ Solid.ttf)
 }
+
+/* ball shake animation */
+
+/* .ballShake { */
+  /* animation-name: shake;
+  animation-iteration-count: infinite; */
+  /* transition: transform .2s ease-in-out; */
+  /* transform: rotate(3deg); */
+  /* transition: 2s ease-in-out; */
+  /* transform: rotate(90deg) */
+/* }
+#shake {
+  -webkit-animation: rotation 2s 5 linear;
+}
+@keyframes rotation {
+  from {
+      -webkit-transform: rotate(-5deg);
+      transform: translateX(-10px)
+  }
+  to {
+      -webkit-transform: rotate(5deg);
+      transform: translateX(10px)
+  }
+} */
