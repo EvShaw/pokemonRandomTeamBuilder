@@ -242,7 +242,7 @@ h1 {
 /* -----------------------------------------------------------------------------Bench */
 
 .mainBG {
-  background-image: url(/css/assets/battleMap.png);
+  background-image: url(../css/assets/battleMap.png);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 50% 50%;
@@ -405,7 +405,7 @@ h1 {
 
 @font-face {
   font-family: pokemon;
-  src: url(/css/assets/Pokemon\ Solid.ttf)
+  src: url(../css/assets/Pokemon\ Solid.ttf)
 }
 
 /* ball shake animation */
