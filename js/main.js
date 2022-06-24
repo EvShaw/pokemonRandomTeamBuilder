@@ -117,7 +117,8 @@ async function getPokemon(url) {
   newPokemon.encounterInfo()
   newPokemon.storeInfo()
   // typeOne = teamRoster[teamIndex].types[0]
-  changeTheBG(typeOne)
+  // changeTheBG(typeOne)
+  displayInformation()
 }
 
 // const pokeEggImg = 'https://www.pngitem.com/pimgs/m/52-528163_pokemon-egg-png-transparent-png.png'
@@ -196,11 +197,11 @@ class Pokemon {
   }
   displayMoves(name) {
     // this.moveList.forEach(move => {
-      // const li = document.createElement('li')
-      // li.textContent = move
-      // document.querySelector('.moveSetUl').appendChild(li)
-      //add moves to object: 
-      // teamRoster[teamIndex].moves.push(move)
+    // const li = document.createElement('li')
+    // li.textContent = move
+    // document.querySelector('.moveSetUl').appendChild(li)
+    //add moves to object: 
+    // teamRoster[teamIndex].moves.push(move)
     // })
   }
 }
@@ -332,7 +333,14 @@ class PokeInfo extends Pokemon {
   }
 }
 
-
+//pokeDex Selectors: 
+const theName = document.querySelector('.theName')
+const theType = document.querySelector('.theType')
+const location1 = document.querySelector('.theLocation1')
+const location2 = document.querySelector('.theLocation2')
+const location3 = document.querySelector('.theLocation3')
+const location4 = document.querySelector('.theLocation4')
+const location5 = document.querySelector('.theLocation5')
 
 
 function displayInformation() {
@@ -342,11 +350,100 @@ function displayInformation() {
   moveTwo.textContent = teamRoster[teamIndex].moves[1]
   moveThree.textContent = teamRoster[teamIndex].moves[2]
   moveFour.textContent = teamRoster[teamIndex].moves[3]
+
+  theName.textContent = teamRoster[teamIndex].pokemonName
+
+
+  //pokedex type display
+
+  //add n to the end of a if the type begins with a vowel
+  if (teamRoster[teamIndex].types.length > 1) {
+
+    theType.textContent = `A ${teamRoster[teamIndex].types[0]} and ${teamRoster[teamIndex].types[1]} type.`
+  } else {
+    theType.textContent = `A ${teamRoster[teamIndex].types[0]} type.`
+  }
+
+//This pokemon can be found:
+
+
+  //pokedex location display
+  let randNum = Math.floor(Math.random() * 898) + 1
+
+
+  // const allLocations = teamRoster[teamIndex].locations.slice(0, 5).join(', ').replaceAll('-', ' ').split('-')
+  const allLocation = teamRoster[teamIndex].locations[0].split(',')
+
+
+  console.log(allLocation.length)
+
+  console.log(allLocation[0])
+  console.log(allLocation[1])
+  console.log(allLocation[2])
+  console.log(allLocation[3])
+  console.log(allLocation[4])
+
+
+
+  if (allLocation.length == 1 && allLocation[0] !== 'undefined') {
+    location1.innerText = `This Pokemons only known \n location is: \n${allLocation[0]}`
+  } else if (allLocation.length == 2) {
+    `This Pokemon can be found at: \n ${allLocation[0]} and ${allLocation[1]}`
+    location2.innerText = allLocation[1]
+  } else if (allLocation.length == 3) {
+    location1.innerText = allLocation[0]
+    location2.innerText = allLocation[1]
+    location3.innerText = allLocation[2]
+  } else if (allLocation.length == 4) {
+    console.log('4 locations')
+    location1.innerText = allLocation[0]
+    location2.innerText = allLocation[1]
+    location3.innerText = allLocation[2]
+    location4.innerText = allLocation[3]
+  } else if (allLocation.length >= 5) {
+    location1.innerText = `This Pokemon can be found at 5 or more locations:
+      ${allLocation[0]}
+      ${allLocation[1]}
+      ${allLocation[2]}
+      ${allLocation[3]}
+      ${allLocation[4]}`
+    // /n
+    // /n
+    // ${allLocation[0]} /n
+    // ${allLocation[1]} /n
+    // ${allLocation[2]} /n
+    // ${allLocation[3]} /n
+    // ${allLocation[4]}}`
+   
+    
+    // ${location1.innerText = allLocation[0]}\n
+    // ${location2.innerText = allLocation[1]}\n
+    // ${location3.innerText = allLocation[2]}\n
+    // ${location4.innerText = allLocation[3]}\n
+    // ${location5.innerText = allLocation[4]}\n`
+    
+    // console.log('5 or more locations are known')
+    // `This Pokemons has 5 or moreLocations \n 
+    // and can be found: \n
+    // ${location1.innerText = allLocation[0]}\n
+    // ${location2.innerText = allLocation[1]}\n
+    // ${location3.innerText = allLocation[2]}\n
+    // ${location4.innerText = allLocation[3]}\n
+    // ${location5.innerText = allLocation[4]}\n`
+    
+    
+    
+   
+   
+  } else {
+    location1.innerText = 'This Pokemons whereabouts \n are unknown'
+  }
+
+
   //change BG: 
 
-
-
   if (teamRoster[teamIndex].types.length === 2) {
+    //add gradient bg with color types if pokemon has more than one type. 
     console.log('double')
     changeTheBG('black')
   } else {
@@ -360,7 +457,19 @@ function clearDisplay() {
   nameDisplay.textContent = ''
   centerBall.src = ''
   changeTheBG('black')
+  moveOne.textContent = ''
+  moveTwo.textContent = ''
+  moveThree.textContent = ''
+  moveFour.textContent = ''
 
+
+  theName.textContent = ''
+  theType.textContent = ''
+  location1.textContent = ''
+  location2.textContent = ''
+  location3.textContent = ''
+  location4.textContent = ''
+  location5.textContent = ''
 }
 
 
@@ -444,7 +553,7 @@ const dragonType = '#7038F8'
 const steelType = '#B8B8D0'
 const fairyType = '#F0B6BC'
 
-// gradient based on dual types. 
+// gradient based on dual types.
 // document.querySelector('.centerBall').style.backgroundColor = `${type}`1
 
 // document.querySelector('.centerBall').style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
@@ -481,6 +590,6 @@ const fairyType = '#F0B6BC'
 
 
 
-document.querySelector('.pokemonName2').addEventListener('click', _ => {
-  localStorage.clear()
-})
+// document.querySelector('.pokemonName2').addEventListener('click', _ => {
+//   localStorage.clear()
+// })
