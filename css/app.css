@@ -168,23 +168,127 @@ h1 {
   background-repeat: no-repeat;
   background-size: contain;
 } */
+/* -------------------------------------------------------------------------Overlay */
+.profOak {
+  position: absolute;
+  /* width: 19%; */
+  width: 200px;
+  bottom: -8px;
+  right: 0;
+}
+
+.pokeDex {
+  position: absolute;
+  width: 500px;
+  bottom: -8px;
+  left: 0;
+}
+
+
+
+.pokeInfo {
+  position: absolute;
+  bottom: 59px;
+  left: 18px;
+  border: 3px solid purple;
+  width: 207px;
+  height: 212px;
+  padding: 5px;
+}
+.theName {
+  margin: 0 0 10px 0;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+}
+.theName::first-letter {
+  text-transform: uppercase;
+}
+.pokeInfo h2+h2 {
+  margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.moveSet {
+  position: absolute;
+  /* width: 19%; */
+  width: 500px;
+  bottom: 56px;
+  left: 300px;
+  /* color: red; */
+  font-size: 24px;
+  font-family: 'pokemon';
+}
+
+.moves {
+  margin: 20px 0;
+}
+
+
+
+
+.whiteBackDropElement {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+}
+
+
+
 /* -----------------------------------------------------------------------------Bench */
 
-.bench {
+.mainBG {
+  background-image: url(/css/assets/battleMap.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 
-  margin-bottom: 10rem;
+.topSection {
+  height: 78vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottomSection {
+  height: 22vh;
+}
+
+.bench {
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
 }
 
 .benchReview {
-  width: 60%;
-  height: 50px;
+  width: 50%;
   margin: auto;
-  /* border: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 40px;
+
 }
 
 .pokeIconActive {
@@ -200,15 +304,18 @@ h1 {
 }
 
 
-
-
-
 /* -------------------------------------------------------------------------Pokeballs */
 .pokeballDisplay {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
 }
 
 
@@ -225,31 +332,28 @@ h1 {
 .imgPokeball {
   width: 100px;
   /* height: 100px; */
+
 }
 
 
 /* CENTER */
-
-
 .centerBall {
   margin: 2rem 0;
-  transform: scale(1.5);
   width: 12rem;
   opacity: 1;
   background: white;
   border-radius: 100px;
+  z-index: 1;
+
 }
 
 #centerBall {
-  width: 200px;
+  width: 225px;
 }
 
-.centerPokeBall {
+/* .centerPokeBall {
   width: 200px;
-}
-
-
-
+} */
 
 /*------------------------------------------------------------- Arrows: next and prev */
 
@@ -259,7 +363,7 @@ h1 {
   justify-content: center;
   align-items: center;
   padding: 5px;
-  margin: -6.75rem 0 0rem 0;
+  margin: -4.75rem 0 0rem 0;
   gap: 17rem;
 }
 
@@ -327,10 +431,11 @@ h1 {
 
 .bottomSection {
   width: 100%;
-  height: 300px;
+  height: 22vh;
   border: 1px solid black;
-  margin: 10rem 0 0 0;
+  margin: 0rem 0 0 0;
   text-align: center;
+  /* background: red; */
 }
 
 @font-face {
@@ -341,12 +446,12 @@ h1 {
 /* ball shake animation */
 
 /* .ballShake { */
-  /* animation-name: shake;
+/* animation-name: shake;
   animation-iteration-count: infinite; */
-  /* transition: transform .2s ease-in-out; */
-  /* transform: rotate(3deg); */
-  /* transition: 2s ease-in-out; */
-  /* transform: rotate(90deg) */
+/* transition: transform .2s ease-in-out; */
+/* transform: rotate(3deg); */
+/* transition: 2s ease-in-out; */
+/* transform: rotate(90deg) */
 /* }
 #shake {
   -webkit-animation: rotation 2s 5 linear;
