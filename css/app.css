@@ -136,36 +136,6 @@ table {
 
 
 
-/******************************************
-/* TABLE OF CONTENTS
-/*******************************************/
-
-/* Globals */
-
-
-
-
-
-
-/* Pokedex */
-
-    /*Left Side  */
-        /* Display: Name, type(S), locations */
-    /*Right Side  */
-        /* Random four moves display */
-
-    /* Professor Oak & Chat Bubble */
-
-
-
-/* Footer */
-
-/* Media Queries */
-
-
-
-
-
 /* --------------------------------------------------------------------  Globals  --*/
 
 html {
@@ -185,10 +155,6 @@ html {
   visibility: hidden;
 }
 
-/******************************************
-  /* LAYOUT
-  /*******************************************/
-
 header {
   height: 100px;
 
@@ -198,25 +164,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-
-/* .body {
-  padding: 0 2rem;
-} */
-
-
-/* background-image: url(../css/assets/battleMap.png); */
-/* h1 {
-  font-size: 3rem;
-} */
-
-/* body {
-  background-image: url(/css/assets/sceneOneBG.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-} */
-
 /* --------------------------------------------------- */
-
 
 /* background and main container */
 .firstLog {
@@ -645,20 +593,11 @@ footer a:first-child {
   color: black;
   text-decoration: none;
 }
-
 .mapMaker a:hover {
   color: red;
 
 }
-
-
 /* Animations-------------------------------------------------------------------- */
-
-/* .silentMode {
-  background: black;
-  visibility: hidden;
-} */
-
 .slideToRight {
   animation: slideToRight 2s ease-in-out .5s 1 forwards;
 }
@@ -666,7 +605,6 @@ footer a:first-child {
 .slideToBot {
   animation: slideToBot 3s ease-in-out .5s 1 forwards;
 }
-
 @keyframes slideToRight {
   0% {
     top: 0%;
@@ -678,7 +616,6 @@ footer a:first-child {
     left: 90%;
   }
 }
-
 @keyframes slideToBot {
   0% {
     top: 00%;
@@ -691,13 +628,11 @@ footer a:first-child {
   }
 }
 /* --------------------------------------------------------------  Media Queries --*/
-
 @media all and (min-width: 1500px) {
   .battleMapBG {
     width: 65%;
     background-position: 50%, 50%;
   }
-
 }
 @media all and (min-width: 1200px) {
   .helpBench {
@@ -709,11 +644,8 @@ footer a:first-child {
     left: 60%;
   }
 }
-
 @media all and (max-width: 562px) {
  .battleMapBG {
   transform: translate(-50%, -70%);
  }
 }
-
-/* //last update: 6/28 @ 11:56PM */
