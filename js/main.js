@@ -668,5 +668,3 @@ helpBTN.addEventListener('click', _ => {
     document.querySelector('.helpToggle').classList.toggle('hide')
   }
 })
-
-//last update: 6/28 @ 11:56PM
