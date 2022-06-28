@@ -630,7 +630,7 @@ function oakFollowUpRes(data) {
 
   } else {
     oakLastText()
-  }
+  } 
 }
 function oakLastText() {
   chatText.textContent = oakTips[oakTips.length - 1]
@@ -669,4 +669,4 @@ helpBTN.addEventListener('click', _ => {
   }
 })
 
-
+//last update: 6/28 @ 11:56PM
