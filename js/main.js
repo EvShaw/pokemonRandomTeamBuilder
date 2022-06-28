@@ -1,8 +1,6 @@
 
 let oldTeam = JSON.parse(window.localStorage.getItem('team'))
 
-
-
 const teamRoster = [
   {
     pokemonName: '',
@@ -57,7 +55,7 @@ const teamRoster = [
 for (let prop in oldTeam) {
   teamRoster[prop] = oldTeam[prop]
 }
-// ------------------------------------------------------------ Display Selectors: 
+// -------------------------------------------------------------- Display Selectors: 
 
 const centerBall = document.querySelector('#centerBall')
 const centerBallBG = document.querySelector('.centerBall')
@@ -68,7 +66,84 @@ const moveThree = document.querySelector('#moveThree')
 const moveFour = document.querySelector('#moveFour')
 
 
+//------------------------------------------------------------------------ARROWS:
+// //------------------------ left arrow: 
 
+// document.querySelector('.benchReview').addEventListener('click', (e) => {
+//   console.log(e.target)
+// })
+
+document.querySelector('.arrowBTNS').addEventListener('click', (e) => {
+
+  if (e.target.id === 'leftArrow') {
+    shiftLeft()
+  } else if (e.target.id === 'rightArrow') {
+    shiftRight()
+  }
+})
+
+function shiftLeft() {
+  clearDisplay()
+  if (teamIndex !== 0) {
+    teamIndex--
+    switchIcon(teamIndex)
+  } else if (teamIndex === 0) {
+    teamIndex = 5
+    document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
+    document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
+    document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
+  }
+}
+
+function shiftRight() {
+  clearDisplay()
+  if (teamIndex !== 5) {
+    teamIndex++
+    switchIcon(teamIndex)
+  } else if (teamIndex === 5) {
+    teamIndex = 0
+    document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
+    document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
+    document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
+
+  }
+}
+
+//---------------------------------------------------------------------------Top Icons:
+function switchIcon(teamIndex) {
+  switch (teamIndex) {
+    case 0:
+      document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
+      break;
+    case 1:
+      document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon1').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon2').classList.remove('pokeIconActive')
+      break;
+    case 2:
+      document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon2').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon3').classList.remove('pokeIconActive')
+      break;
+    case 3:
+      document.querySelector('#pokeIcon2').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon3').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
+      break;
+    case 4:
+      document.querySelector('#pokeIcon3').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon4').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
+      break;
+    case 5:
+      document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
+      document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
+      document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
+      break;
+  }
+}
 
 
 //--------------------------------------------------------------<after login:
@@ -80,7 +155,6 @@ let typeOne = ''
 // on click event - display pokemon
 centerBall.addEventListener('click', (e) => {
   // console.log(e.target.id)
-
   if (teamRoster[teamIndex].pokemonName == '') {
     let randNum = Math.floor(Math.random() * 898) + 1
     getPokemon(`https://pokeapi.co/api/v2/pokemon/${randNum}`)
@@ -122,7 +196,6 @@ async function getPokemon(url) {
 }
 
 // const pokeEggImg = 'https://www.pngitem.com/pimgs/m/52-528163_pokemon-egg-png-transparent-png.png'
-
 
 //-----------------------------------------------------------------------loopthroughARR:
 
@@ -205,95 +278,6 @@ class Pokemon {
     // })
   }
 }
-//------------------------------------------------------------------------ARROWS:
-
-//------------------------ left arrow: 
-
-document.querySelector('.leftArrow').addEventListener('click', shiftLeft)
-
-function shiftLeft() {
-  clearDisplay()
-  if (teamIndex !== 5) {
-    document.querySelector('#rightArrow').classList.remove('hide')
-  }
-  if (teamIndex !== 0) {
-    teamIndex--
-    switchIcon(teamIndex)
-  } else if (teamIndex === 0) {
-    teamIndex = 5
-    document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
-    document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
-    document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
-  }
-  console.log(teamIndex)
-  document.querySelectorAll('.imgPokeball')[1].src = 'https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png'
-
-}
-
-
-//------------------------ right arrow: 
-
-document.querySelector('.rightArrow').addEventListener('click', shiftRight)
-function shiftRight() {
-  clearDisplay()
-  if (teamIndex !== 5) {
-    teamIndex++
-    switchIcon(teamIndex)
-
-
-  } else if (teamIndex === 5) {
-    teamIndex = 0
-    document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
-    document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
-    document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
-  }
-
-
-  document.querySelectorAll('.imgPokeball')[1].src = 'https://www.freeiconspng.com/thumbs/pokeball-png/file-pokeball-png-0.png'
-
-}
-
-
-
-
-
-//---------------------------------------------------------------------------Top Icons:
-function switchIcon(teamIndex) {
-  switch (teamIndex) {
-    case 0:
-      document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon0').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
-      break;
-    case 1:
-      document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon1').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon2').classList.remove('pokeIconActive')
-      break;
-    case 2:
-      document.querySelector('#pokeIcon1').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon2').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon3').classList.remove('pokeIconActive')
-      break;
-    case 3:
-      document.querySelector('#pokeIcon2').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon3').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
-      break;
-    case 4:
-      document.querySelector('#pokeIcon3').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon4').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon5').classList.remove('pokeIconActive')
-      break;
-    case 5:
-      document.querySelector('#pokeIcon4').classList.remove('pokeIconActive')
-      document.querySelector('#pokeIcon5').classList.add('pokeIconActive')
-      document.querySelector('#pokeIcon0').classList.remove('pokeIconActive')
-      break;
-  }
-}
-
-
 
 class PokeInfo extends Pokemon {
   constructor(name, types, moves, image, height, location) {
@@ -330,6 +314,7 @@ class PokeInfo extends Pokemon {
   }
   storeInfo() {
     localStorage.setItem('team', JSON.stringify(teamRoster))
+    localStorage.setItem('responseCount', JSON.stringify(responseCount))
   }
 }
 
@@ -344,18 +329,33 @@ const location5 = document.querySelector('.theLocation5')
 
 
 function displayInformation() {
-  nameDisplay.textContent = teamRoster[teamIndex].pokemonName
+  
+
+  // extract name if name has hyphen
+  // let testName = 'Thundurus-incarnate'
+
+  if (teamRoster[teamIndex].pokemonName.includes('-')) {
+    const placement = teamRoster[teamIndex].pokemonName.indexOf('-')
+    const newName = teamRoster[teamIndex].pokemonName.substring(0, placement)
+    nameDisplay.textContent = newName
+    theName.textContent = newName
+
+  } else {
+    nameDisplay.textContent = teamRoster[teamIndex].pokemonName
+    theName.textContent = teamRoster[teamIndex].pokemonName
+  }
+
+
+
   centerBall.src = teamRoster[teamIndex].img
   moveOne.textContent = teamRoster[teamIndex].moves[0]
   moveTwo.textContent = teamRoster[teamIndex].moves[1]
   moveThree.textContent = teamRoster[teamIndex].moves[2]
   moveFour.textContent = teamRoster[teamIndex].moves[3]
 
-  theName.textContent = teamRoster[teamIndex].pokemonName
-
+  
 
   //pokedex type display
-
   //add n to the end of a if the type begins with a vowel
   if (teamRoster[teamIndex].types.length > 1) {
 
@@ -364,26 +364,11 @@ function displayInformation() {
     theType.textContent = `A ${teamRoster[teamIndex].types[0]} type.`
   }
 
-//This pokemon can be found:
-
-
   //pokedex location display
   let randNum = Math.floor(Math.random() * 898) + 1
 
-
   // const allLocations = teamRoster[teamIndex].locations.slice(0, 5).join(', ').replaceAll('-', ' ').split('-')
   const allLocation = teamRoster[teamIndex].locations[0].split(',')
-
-
-  console.log(allLocation.length)
-
-  console.log(allLocation[0])
-  console.log(allLocation[1])
-  console.log(allLocation[2])
-  console.log(allLocation[3])
-  console.log(allLocation[4])
-
-
 
   if (allLocation.length == 1 && allLocation[0] !== 'undefined') {
     location1.innerText = `This Pokemons only known \n location is: \n${allLocation[0]}`
@@ -401,69 +386,37 @@ function displayInformation() {
     location3.innerText = allLocation[2]
     location4.innerText = allLocation[3]
   } else if (allLocation.length >= 5) {
-    location1.innerText = `This Pokemon can be found at 5 or more locations:
+    location1.innerText = `This Pokemon can be found \n at 5 or more locations:
     
       ${allLocation[0]}
       ${allLocation[1]}
       ${allLocation[2]}
       ${allLocation[3]}
       ${allLocation[4]}`
-    // /n
-    // /n
-    // ${allLocation[0]} /n
-    // ${allLocation[1]} /n
-    // ${allLocation[2]} /n
-    // ${allLocation[3]} /n
-    // ${allLocation[4]}}`
-   
-    
-    // ${location1.innerText = allLocation[0]}\n
-    // ${location2.innerText = allLocation[1]}\n
-    // ${location3.innerText = allLocation[2]}\n
-    // ${location4.innerText = allLocation[3]}\n
-    // ${location5.innerText = allLocation[4]}\n`
-    
-    // console.log('5 or more locations are known')
-    // `This Pokemons has 5 or moreLocations \n 
-    // and can be found: \n
-    // ${location1.innerText = allLocation[0]}\n
-    // ${location2.innerText = allLocation[1]}\n
-    // ${location3.innerText = allLocation[2]}\n
-    // ${location4.innerText = allLocation[3]}\n
-    // ${location5.innerText = allLocation[4]}\n`
-    
-    
-    
-   
-   
-  } else {
-    location1.innerText = 'This Pokemons whereabouts \n are unknown'
-  }
 
+  } else {
+    location1.innerText = 'This Pokemons \n whereabouts are unknown'
+  }
 
   //change BG: 
 
   if (teamRoster[teamIndex].types.length === 2) {
     //add gradient bg with color types if pokemon has more than one type. 
-    console.log('double')
     changeTheBG('black')
   } else {
-    console.log('sinlge')
     typeOne = teamRoster[teamIndex].types[0]
     changeTheBG(typeOne)
   }
 }
-
+//on refactor, add loop and shorten this... 
 function clearDisplay() {
   nameDisplay.textContent = ''
-  centerBall.src = ''
+  centerBall.src = '/css/assets/pokeballColored.png'
   changeTheBG('black')
   moveOne.textContent = ''
   moveTwo.textContent = ''
   moveThree.textContent = ''
   moveFour.textContent = ''
-
-
   theName.textContent = ''
   theType.textContent = ''
   location1.textContent = ''
@@ -472,7 +425,6 @@ function clearDisplay() {
   location4.textContent = ''
   location5.textContent = ''
 }
-
 
 function changeTheBG(type) {
   // const centerBallBG = document.querySelector('.centerBall')
@@ -559,13 +511,11 @@ const fairyType = '#F0B6BC'
 
 // document.querySelector('.centerBall').style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
 
-
 // let newArr = [0, 0]
 
 // function countPositivesSumNegatives(input) {
 
 // }
-
 
 // function changeTheBGDoubleColors(typeOne, typeTwo) {
 //   const centerBallBG = document.querySelector('.centerBall')
@@ -575,46 +525,148 @@ const fairyType = '#F0B6BC'
 //       centerBallBG.style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
 //       break;
 
-
 //   console.log('hi')
 //   // style.backgroundImage = `linear-gradient(to bottom,'${typeOne}' 1%,'${typeTwo}' 100%)`
 
 // }
 
-
 // function changeBGSouble(type) {
-
 
 //   backgroundTypeColor.style.backgroundImage = `linear - gradient(to right, ${normalType}, ${fireType})`
 
 // }
 
-
-
 // document.querySelector('.pokemonName2').addEventListener('click', _ => {
 //   localStorage.clear()
 // })
 
-
-//prof oak mouse over event
-
+//-----------------------------------------------------ground zero - prof oak: 
 const profOak = document.querySelector('.profOak')
-const chatBox = document.querySelector('.chatBox')
+const chatText = document.querySelector('.chatBoxText')
+
+let waitForResponse = true
+let responseCount = 0
+const welcomeBack = localStorage.getItem('responseCount', responseCount)
+
+if (welcomeBack === '7') {
+  chatText.textContent = "Welcome Back Trainer!"
+}
 
 
-// chat box appear
-profOak.addEventListener('mouseover', (e) => {
+//intro sentences
+const oakTips = [
+  "I'm happy to meet you!",
+  "Normally I have a lot more to say but there have been a lot of you new trainers as of late... ",
+  "I think we can jump right into it...",
+  "Welcome to the rngNuzlock-Challenge!",
+  "Here we dial it up a little by not only randoming our team, but all our moves as well!",
+  "If you need help knowing what is what, you can toggle the tips display by clicking on the help button in the bottom of your Pokedex! Make sure you toggle it off to continue",
+  // "Welcome Back Trainer!"
+]
 
-  chatBox.classList.toggle('hide')
+
+//change over to start btn
+const startBTN = document.querySelector('.startBTN')
+const nextBTN = document.querySelector('.nextBTN')
+
+startBTN.addEventListener('click', _ => {
+
+  if (waitForResponse) {
+    startBTN.style.display = 'none'
+    nextBTN.classList.toggle('pulse')
+    nextBTN.classList.add('silentMode')
+  }
+  if (responseCount == 0) {
+    //first call to chat
+    oakSaysWhat(oakTips[responseCount]) //im oak
+  }
+  // if (welcomeBack === '7') {
+  //   console.log('WelcomeBack')
+  //   responseCount = 7
+  // }
 })
-//chat box remove
-profOak.addEventListener('mouseleave', (e) => {
 
-  chatBox.classList.toggle('hide')
+function oakSaysWhat(data) {
+  chatText.textContent = data
+  responseCount++
+  oakFollowUpRes()
+}
+
+
+function oakFollowUpRes(data) {
+  if (responseCount == 1) {
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) //happy to meet you
+    }, 2500)
+  } else if (responseCount == 2) {
+    document.querySelector('.centeredOak').classList.add('slideToRight')
+    setTimeout(() => {
+      document.querySelector('.pokeballDisplay').classList.toggle('hide')
+      document.querySelector('.pokedexContainer').classList.toggle('hide')
+      document.querySelector('.map').classList.toggle('hide')
+      document.querySelector('.benchReview').classList.toggle('hide')
+      document.querySelector('.arrowBTNS').classList.toggle('hide')
+      document.querySelector('.battleMapBG').classList.toggle('hide')
+    }, 2000)
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) // normally I have....
+    }, 6000)
+  } else if (responseCount == 3) {
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) //think we can jump into it
+    }, 2500)
+  } else if (responseCount == 4) {
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) //welcome to nuzlock chalenge
+    }, 5000)
+  } else if (responseCount == 5) {
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) //here we dial it in
+    }, 6000)
+  } else if (responseCount == 6) {
+    setTimeout(() => {
+      oakSaysWhat(oakTips[responseCount]) //if you need help...
+    }, 6000)
+
+  } else {
+    oakLastText()
+  } 
+}
+function oakLastText() {
+  chatText.textContent = oakTips[oakTips.length - 1]
+
+  setTimeout(() => {
+    document.querySelector('.chatBoxText').classList.add('hide')
+    document.querySelector('#chatBub1').classList.add('hide')
+    document.querySelector('#chatBub2').classList.add('hide')
+    document.querySelector('.nextBTN').textContent = 'Help'
+  }, 3500)
+}
+
+const oak = document.querySelector('.profOak')
+
+oak.addEventListener('mouseover', (e) => {
+  if (responseCount == 7) {
+    document.querySelector('.chatBoxText').classList.toggle('hide')
+    document.querySelector('#chatBub1').classList.toggle('hide')
+    document.querySelector('#chatBub2').classList.toggle('hide')
+  }
+})
+oak.addEventListener('mouseleave', (e) => {
+  if (responseCount == 7) {
+    document.querySelector('.chatBoxText').classList.toggle('hide')
+    document.querySelector('#chatBub1').classList.toggle('hide')
+    document.querySelector('#chatBub2').classList.toggle('hide')
+  }
 })
 
-//toggle help
-profOak.addEventListener('click', (e) => {
-  console.log(e)
-  chatBox.classList.toggle('helpOverlay')
+// Toggle help with click on help btn
+const helpBTN = document.querySelector('.nextBTN')
+
+helpBTN.addEventListener('click', _ => {
+  if (helpBTN.innerHTML === 'Help') {
+    document.querySelector('.helpToggle').classList.toggle('hide')
+  }
 })
+
+//last update: 6/28 @ 11:56PM

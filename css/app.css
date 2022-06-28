@@ -137,13 +137,52 @@ table {
 
 
 /******************************************
-/* CSS
+/* TABLE OF CONTENTS
 /*******************************************/
 
-/* Box Model Hack */
+/* Globals */
+
+
+
+
+
+
+/* Pokedex */
+
+    /*Left Side  */
+        /* Display: Name, type(S), locations */
+    /*Right Side  */
+        /* Random four moves display */
+
+    /* Professor Oak & Chat Bubble */
+
+
+
+/* Footer */
+
+/* Media Queries */
+
+
+
+
+
+/* --------------------------------------------------------------------  Globals  --*/
+
+html {
+  font-family: sans-serif;
+}
+
 * {
+  font-size: 62.5%;
   box-sizing: border-box;
-  font-size: 62.5%
+}
+
+.body {
+  overflow: none;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 /******************************************
@@ -152,438 +191,529 @@ table {
 
 header {
   height: 100px;
-}
-
-/******************************************
-  /* ADDITIONAL STYLES
-  /*******************************************/
-
-
-h1 {
-  font-size: 3rem;
-}
-
-/* body {
-  background-image: url(/css/assets/sceneOneBG.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-} */
-/* -------------------------------------------------------------------------Overlay */
-.profOak {
-  position: absolute;
-  width: 350px;
-  bottom: 45px;
-  right: 0;
-}
-
-.chatBox {
-  width: 30%;
-  height: auto;
-  color: white;
-  background: black;
-  position: absolute;
-  right: 173px;
-  bottom: 360px;
-  padding: 50px;
-  border-top-left-radius: 100%;
-  border-top-right-radius: 100%;
-  border-bottom-left-radius: 100%;
-  z-index: 2;
-}
-
-.pokeDex {
-  position: absolute;
-  width: 500px;
-  bottom: 54px;
-  left: 0;
-}
-.pokeInfo {
-  position: absolute;
-  bottom: 120px;
-  left: 18px;
-  width: 207px;
-  height: 212px;
-  padding: 5px;
-}
-.theName {
-  margin: 0 0 10px 0;
-  display: inline-block;
-  font-size: 20px;
-  font-weight: 700;
-}
-.theName::first-letter {
-  text-transform: uppercase;
-}
-
-.pokeInfo h2+h2 {
-  margin-bottom: 10px;
-}
-
-.moveSet {
-  position: absolute;
-  width: 500px;
-  bottom: 130px;
-  left: 300px;
-  font-size: 24px;
-  font-family: 'pokemon';
-}
-.moves {
-  margin: 20px 0;
-}
-.whiteBackDropElement {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 116px;
-  background: rgba(0, 0, 0, 0.8);
-}
-/* -----------------------------------------------------------------------------Bench */
-
-.mainBG {
-  background-image: url(../css/assets/battleMap.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50% 50%;
-}
-.topSection {
-  height: 78vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.bottomSection {
-  height: 22vh;
-}
-.bench {
-  background: rgba(255, 255, 255, 0.8);
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  display: flex;
-}
-.benchReview {
-  width: 50%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-.pokeIconActive {
-  transition: .2s ease;
-  background-color: rgba(255, 0, 0, 0.6);
-  border-radius: 50%;
-}
-.pokeIcon img {
-  width: 25px;
-  height: 25px;
-}
-/* -------------------------------------------------------------------------Pokeballs */
-.pokeballDisplay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
 
 }
-
-
-.pokeballs {
-  height: 100px;
-  width: 78px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imgPokeball {
-  width: 100px;
-}
-
-
-/* CENTER */
-.centerBall {
-  margin: 2rem 0;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 50%;
-  opacity: 1;
-  background: white;
-  z-index: 1;
-}
-
-#centerBall {
-  width: 300px;
-}
-/*------------------------------------------------------------- Arrows: next and prev */
-
-.arrowBTNS {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;
-  margin: -4.75rem 0 0rem 0;
-  gap: 17rem;
-}
-.imgIcon {
-  width: 40px;
-  display: inline-block;
-}
-.rightArrow:hover, .leftArrow:hover {
-  transition: .2s ease-in-out;
-  transform: scale(.8);
-}
-.leftArrow,
-.rightArrow {
-  background-color: rgb(228, 228, 228);
-  opacity: 80%;
-  border-radius: 50%;
-  max-width: 100px;
-  display: flex;
-}
-.leftArrow:hover,
-.rightArrow:hover {
-  background: radial-gradient(rgba(255, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
-}
-.leftArrow:active,
-.rightArrow:active {
-  transform: scale(.75);
-  transition: transform .2s ease;
-}
-
-.leftArrow {
-  margin-right: 50px;
-}
-
-.rightArrow {
-  margin-left: 50px;
-}
-
-.hide {
-  visibility: hidden;
-}
-
-/*-----------------------------------------------------------------------Pokemon Info */
-
-/*-------- Name: */
-
-.pokemonName {
-  position: absolute;
-  top: -42%;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0 auto 0 auto;
-  text-align: center;
-  display: inline-block;
-  font-size: 70px;
-  letter-spacing: 4px;
-  font-family: 'pokemon';
-  color: white;
-  text-shadow: 2px 2px 12px black;
-}
-
-.pokeMoveset {
-  font-size: 1.2rem;
-}
-.bottomSection {
-  width: 100%;
-  height: 22vh;
-  border: 1px solid black;
-  margin: 0rem 0 0 0;
-  text-align: center;
-  /* background: red; */
-}
-
-@font-face {
-  font-family: pokemon;
-  src: url(../css/assets/Pokemon\ Solid.ttf)
-}
-
-/* ball shake animation */
-
-/* .ballShake { */
-/* animation-name: shake;
-  animation-iteration-count: infinite; */
-/* transition: transform .2s ease-in-out; */
-/* transform: rotate(3deg); */
-/* transition: 2s ease-in-out; */
-/* transform: rotate(90deg) */
-/* }
-#shake {
-  -webkit-animation: rotation 2s 5 linear;
-}
-@keyframes rotation {
-  from {
-      -webkit-transform: rotate(-5deg);
-      transform: translateX(-10px)
-  }
-  to {
-      -webkit-transform: rotate(5deg);
-      transform: translateX(10px)
-  }
-} */
-
-.helpOverlay {
-  /* hide it with click */
-}
-
-.benchHelp {
-  position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: black;
-  color: white;
-  padding: 20px;
-  border-radius: 10px;
-
-}
-
-.benchHelp * {
-  font-size: 16px;
-}
-
-.benchHelp>img {
-  margin: -40px 0 0 0px;
-  position: absolute;
-  transform: rotate(-31deg);
-}
-
-.centerBallHelp {
-  width: 30%;
-  position: absolute;
-  top: 128%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: black;
-  color: white;
-  padding: 11px 40px;
-  border-radius: 10px;
-
-}
-
-.centerBallHelp * {
-  font-size: 16px;
-}
-
-.centerBallHelp img {
-  margin: -32px 0 0 0px;
-  position: absolute;
-  transform: rotate(-31deg);
-}
-
-
-.leftArrowHelp,
-.rightArrowHelp {
-  position: absolute;
-  background: black;
-  color: white;
-  padding: 11px 40px;
-  border-radius: 10px;
-  top: 140px;
-  width: 50px;
-  z-index: 2;
-}
-
-.leftArrowHelp h1,
-.rightArrowHelp h1 {
-
-  font-size: 16px;
-}
-
-.leftArrowHelp {
-  left: 0%;
-   z-index: 2;
-}
-
-.rightArrowHelp {
-  right: 0%;
-}
-
-.leftArrowHelp img {
-  position: absolute;
-  margin: 42px 94px 0 0px;
-  transform: rotate(-128deg);
-}
-
-.rightArrowHelp img {
-  position: absolute;
-  margin: 42px 0 0 94px;
-  transform: rotate(128deg);
-}
-
-
 .flexIt {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.thanksMapMaker {
-  position: absolute;
-  bottom: 80px;
-  right: 550px;
-  width: 30%;
-}
+/* .body {
+  padding: 0 2rem;
+} */
 
-.sideNotes {
-  position: absolute;
+
+/* background-image: url(../css/assets/battleMap.png); */
+/* h1 {
+  font-size: 3rem;
+} */
+
+/* body {
+  background-image: url(/css/assets/sceneOneBG.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
+
+/* --------------------------------------------------- */
+
+
+/* background and main container */
+.firstLog {
+  height: 95vh;
+  width: 80%;
   margin: 0 auto;
-  bottom: 150px;
-  right: 550px;
+  position: relative;
+  /* background: gray; */
+  z-index: 0;
+}
+/* Professor Oak & Chat Bubble */
+
+
+.centeredOak {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
   width: 30%;
+  z-index: 3;
 }
 
-footer {
-  width:100%;
-  height: 60px;
-  background: black;
+.profOak {
   position: absolute;
-  bottom: 0;
-  color: white;
+  bottom: 0%;
+  right: 0%;
+  /* transform: translate(-50%, -50%); */
+  width: 15rem;
 }
+.chatBoxText {
+  position: absolute;
+  bottom: 26%;
+  right: 50%;
+  background: rgba(255, 255, 255, .75);
+  font-size: 16px;
+  width: 19rem;
+  height: 9rem;
+  text-align: center;
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
+  border-bottom-right-radius: 3rem;
+  border-bottom-left-radius: 3rem;
+  border: 3px solid black;
+  padding: 0.5rem;
+}
+
+.chatBubbleElement {
+  position: absolute;
+  background: rgb(255, 255, 255);
+  border: 2px solid black;
+  border-radius: 50%;
+} 
+
+.chatBubbleElement:first-of-type {
+  bottom: 27%;
+  right: 49%;
+  width: 12px;
+  height: 12px;
+} 
+
+.chatBubbleElement:last-of-type {
+  bottom: 27%;
+  right: 49%;
+  width: 12px;
+  height: 12px;
+}
+
+.startBTN {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: -51px;
+  right: 61px;
+  background: red;
+  border-radius: 50%;
+  color: white;
+
+}
+
+/* --------------------------------------------------------------- Top Indicator -- */
+
+.benchReview {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+  background: rgba(255, 255, 255, 0.75); 
+}
+
+.pokeIcon img {
+  width: 35%; 
+} 
+
+
+ /* left and right icons to cycle ------------------------------------------------- */
+
+/* --------------------------------------------------------  Left - Right arrows -- */
+
+.arrowBTNS {
+  width: 40%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.leftArrow img,
+.rightArrow img {
+  width: 20%;
+  background: rgba(255, 255, 255, .75);
+  border-radius: 50%;
+}
+
+.leftArrow img:hover,
+.rightArrow img:hover {
+  background: red;
+  transition: transform .5s ease-in-out;
+  transform: scale(.8);
+}
+
+.pokeIconActive {
+  background: red;
+  border-radius: 50%;
+}
+
+
+/* ----------------------------------------------------------  CenterBall Section -- */
+/* name */
+
+.pokemonName {
+  font-family: 'pokemon';
+  position: absolute;
+  top: 6%;
+  text-align: center;
+  font-size: 4rem;
+  letter-spacing: 4px;
+}
+.pokemonName::first-letter {
+  text-transform: uppercase;
+}
+
+#centerBall {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: #000000;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+/* ---------------------------------------------------------  BattleMapBG Section -- */
+.battleMapBG {
+  background-image: url(/css/assets/battleMap.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50%, 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 80%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  opacity: .75;
+}
+
+/* -------------------------------------------------------------  Pokedex Section -- */
+
+  .pokedexContainer {
+    width: 50%;
+    height: 100%; 
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+
+  }
+  /* pokedex img */
+  .pokeDex {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+  }
+  .pokedexInfo {
+    position: absolute;
+    bottom: 35px;
+    left: 18px;
+    width: 461px;
+    height: 245px;
+  }
+
+  /* right side - Moves */
+  .moveSet {
+    position: absolute;
+    top: 46%;
+    left: 18rem;
+    transform: translate(0px, -50%);
+
+  }
+  .moveSetUl li {
+    padding: 10px 0;
+    font-family: 'pokemon';
+    font-size: 1.4rem;
+    color: rgb(21, 128, 0);
+    text-shadow: 1px 1px 1px black;
+    /* color: rgb(48, 251, 5); */
+    letter-spacing: 1px;
+  }
+  .moveSetUl li::first-letter {
+    text-transform: uppercase;
+  }
+/* left side - name, type, locations */
+ 
+.theName {
+  font-size: 1.6rem;
+  margin: 4px 0 10px 4px;
+}
+.theName::first-letter {
+  text-transform: uppercase;
+}
+.theName + h2 {
+  font-size: 1rem;
+  margin: 4px 0 10px 4px;
+}
+.theLocation {
+  margin-left: 4px;
+}
+.theLocation li {
+  margin: 10px 0 0 0; 
+}
+/* pulsating Next Button in Pokedex */
+.nextBTN {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5%;
+  left: 39px;
+  z-index: 2;
+  color: rgba(255, 255, 255, .5);
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  background: red;
+  border-radius: 50%;
+  background-image: url(/css/assets/pokeball.png);
+  background-size: contain;
+}
+.pulse {
+  animation: pulse 2s ease-in-out .5s infinite alternate-reverse;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+@font-face {
+  font-family: 'pokemon';
+  src: url(/css/assets/Pokemon\ Solid.ttf);
+}
+/* ---------------------------------------------------------------  Help Display -- */
+
+.helpToggle {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.toggleHelp {
+  position: absolute;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+}
+.helpBench {
+  top: 10%;
+  left: -2%;
+  transform: translate(-50%, -50%);
+}
+.helpBench img {
+  position: absolute;
+  top: -24px;
+  left: 80%;
+  transform: rotate(83deg);
+}
+.helpCenter {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: none;
+}
+.helpCenterPokeball {
+  position: absolute;
+  top: 5%;
+  left: 68%;
+  transform: translate(-50%, -50%);
+  width: 275px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpCenterPokeball img {
+  position: absolute;
+  top: 34px;
+  left: 37%;
+  transform: rotate(122deg);
+}
+.helpRightBall {
+  position: absolute;
+  top: 48%;
+  left: 76%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpRightBall img {
+  position: absolute;
+  top: -22px;
+  left: 54%;
+  transform: rotate(45deg);
+}
+.helpLeftBall {
+  position: absolute;
+  top: 48%;
+  left: 12%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpLeftBall img {
+  position: absolute;
+  top: -22px;
+  left: 54%;
+  transform: rotate(-45deg);
+}
+.helpRightScreen {
+  position: absolute;
+  top: 67%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpRightScreen img {
+  position: absolute;
+  top: 30px;
+  left: 75%;
+  transform: rotate(164deg);
+}
+.helpLeftScreen {
+  position: absolute;
+  top: 64%;
+  left: -28%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.helpLeftScreen img {
+  position: absolute;
+  top: 30px;
+  left: 54%;
+  transform: rotate(93deg);
+}
+
+/* ---------------------------------------------------------------------  Footer -- */
+
+/* FOOTER */
+footer {
+  background: black;
+  color: white;
+  height: 47px;
+}
+
 footer a {
   text-decoration: none;
   color: white;
-  margin-right: 0px;
-  font-size: 18px;
 }
 
-.shell {
-  position: relative;
-  width: 100%;
-  height: 100%;
+footer a:first-child {
+  margin-right: 10px;
 }
+
 .socialFooterIcons {
-  width: 30px;
-  margin: 0 8px;
+  width: 25px;
+}
+.mapMaker {
+  position: absolute;
+  bottom: 30%;
+  right: 8px;
+  text-align: right;
+  margin-left: 10%;
+  writing-mode: vertical-lr;
+}
+.mapMaker * {
+  color: black;
+  text-decoration: none;
+}
+
+.mapMaker a:hover {
+  color: red;
+
 }
 
 
+/* Animations-------------------------------------------------------------------- */
 
+/* .silentMode {
+  background: black;
+  visibility: hidden;
+} */
 
+.slideToRight {
+  animation: slideToRight 2s ease-in-out .5s 1 forwards;
+}
 
+.slideToBot {
+  animation: slideToBot 3s ease-in-out .5s 1 forwards;
+}
 
+@keyframes slideToRight {
+  0% {
+    top: 0%;
+    left: 50%;
+  }
 
-
-
-
-
-
-/* //max width 690px */
-
-
-@media all and (max-width: 600px) {
-  body {
-    padding: 300px;
+  100% {
+    top: 50%;
+    left: 90%;
   }
 }
+
+@keyframes slideToBot {
+  0% {
+    top: 00%;
+    left: 78%;
+  }
+
+  100% {
+    bottom: 0%;
+    left: 78%;
+  }
+}
+/* --------------------------------------------------------------  Media Queries --*/
+
+@media all and (min-width: 1500px) {
+  .battleMapBG {
+    width: 65%;
+    background-position: 50%, 50%;
+  }
+
+}
+@media all and (min-width: 1200px) {
+  .helpBench {
+    left: 15%;
+  }
+}
+@media all and (max-width: 900px) {
+  .helpRightScreen {
+    left: 60%;
+  }
+}
+
+@media all and (max-width: 562px) {
+ .battleMapBG {
+  transform: translate(-50%, -70%);
+ }
+}
+
+/* //last update: 6/28 @ 11:56PM */
